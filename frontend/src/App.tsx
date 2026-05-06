@@ -3,15 +3,20 @@ import Login from "@/pages/auth/Login";
 import Signup from "@/pages/auth/Signup";
 import AppLayout from "./layouts/AppLayout";
 import Home from "./pages/Home";
+import Landing from "./pages/Landing";
+import "./app.css";
 
 function App() {
   return (
     <Routes>
+      {/*Landing */}
+      <Route path="/" element={<Landing />} />
+      {/* Authentication */}
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
 
       {/* Main App */}
-      <Route path="/" element={<AppLayout />}>
+      <Route path="/app " element={<AppLayout />}>
         <Route index element={<Home />} />
       </Route>
     </Routes>
