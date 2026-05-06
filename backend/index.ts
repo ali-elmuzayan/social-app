@@ -1,14 +1,19 @@
-import express from 'express';
+import { connectDB } from "./config/db";
+import { createApp } from "./app";
+import { env } from "./config/env";
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+const startServer = async () => {
+  // CONNECT TO THE DATABASE
+  await connectDB();
 
-app.get('/', (req, res) => {
-  res.send('Social App API');
-});
+  // CREATE the APP
+  const app = createApp();
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+  // running the server
+  const PORT = env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+};
 
-export default app;
+startServer();
