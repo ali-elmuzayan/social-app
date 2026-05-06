@@ -72,8 +72,8 @@ export default defineConfig([
 ])
 ```
 
-
-# Tech Stack
+  
+  ## Tech Stack
   - React + Vite 
   - TypeScript 
   - Tailwind CSS
@@ -81,3 +81,11 @@ export default defineConfig([
   - React Router 
   - React Query
   - Zustand
+
+  ## Pages: 
+  - Home
+  - Profile
+  - Login
+  - Signup
+  - Reset Password
+  - OTP Verification
