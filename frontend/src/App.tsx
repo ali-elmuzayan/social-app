@@ -1,11 +1,20 @@
-import { Button } from "./components/ui/button";
+import { Routes, Route } from "react-router";
+import Login from "@/pages/auth/Login";
+import Signup from "@/pages/auth/Signup";
+import AppLayout from "./layouts/AppLayout";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="text-center mt-50 font-bold text-gray-900 text-4xl">
-      App
-      <Button>Click On me</Button>
-    </div>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+
+      {/* Main App */}
+      <Route path="/" element={<AppLayout />}>
+        <Route index element={<Home />} />
+      </Route>
+    </Routes>
   );
 }
 

@@ -74,13 +74,15 @@ export default defineConfig([
 
   
   ## Tech Stack
-  - React + Vite 
-  - TypeScript 
-  - Tailwind CSS
-  - Shadcn UI
-  - React Router 
-  - React Query
-  - Zustand
+  - React + Vite    => Fast Development Build
+  - TypeScript      => Type Safety
+  - Tailwind CSS    => Utility Classes (Styling)
+  - Shadcn UI       => UI Components
+  - React Router    => Routing
+  - React Query     => Remote State Management
+  - Zustand         => Client State Management
+  - axios           => HTTP Client
+  - react-hot-toast => Toast Notifications
 
   ## Pages: 
   - Home
