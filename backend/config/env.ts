@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import type { StringValue } from "ms";
 
 dotenv.config();
 
@@ -23,7 +24,7 @@ export const env = {
 
   //  JWT configuration
   JWT_SECRET: process.env.JWT_SECRET!,
-  JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || "1h",
+  JWT_EXPIRES_IN: (process.env.JWT_EXPIRES_IN || "1h") as StringValue,
 
   // Database configuration
   MONGO_URI: process.env.MONGO_URI!,

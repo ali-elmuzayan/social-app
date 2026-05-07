@@ -1,18 +1,22 @@
 import { NextFunction, Request, Response } from "express";
+import { AppError } from "../utils/errorHandler";
 
 export const globalErrorHandler = (
   err: unknown,
-  req: Request,
+  _req: Request,
   res: Response,
-  _next: NextFunction
+  _next: NextFunction,
 ) => {
-  const statusCode =
-    typeof err === "object" &&
-    err !== null &&
-    "statusCode" in err &&
-    typeof (err as { statusCode?: unknown }).statusCode === "number"
-      ? (err as { statusCode: number }).statusCode
-      : 500;
+  // Known operational errors (AppError): send a clean JSON response
+  if (err instanceof AppError) {
+    return res.status(err.statusCode).json({
+      success: false,
+      message: err.message,
+    });
+  }
+
+  // Unknown/programming errors: log and send a generic 500
+  console.error("💥 Unexpected error:", err);
 
   const message =
     typeof err === "object" &&
@@ -27,11 +31,9 @@ export const globalErrorHandler = (
       ? (err as { stack?: unknown }).stack
       : undefined;
 
-  res.status(statusCode).json({
+  res.status(500).json({
     success: false,
     message,
-    ...(process.env.NODE_ENV !== "production" && {
-      stack,
-    }),
+    ...(process.env.NODE_ENV !== "production" && { stack }),
   });
 };

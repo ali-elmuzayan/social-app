@@ -1,5 +1,6 @@
 import express from "express";
 import authRoutes from "./routes/authRoutes";
+import healthRoutes from "./routes/healthRoutes";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { globalErrorHandler } from "./middleware/errorMiddleware";
@@ -18,9 +19,10 @@ export const createApp = () => {
   );
 
   // Routes
+  app.use("/api/v1", healthRoutes);
   app.use("/api/v1/auth", authRoutes);
 
-  // Global error middleware (must come after routes)
+  //Global error middleware (must come after routes)
   app.use(globalErrorHandler);
 
   return app;
