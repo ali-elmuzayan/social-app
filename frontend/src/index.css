@@ -1,6 +1,4 @@
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
-@import "@fontsource-variable/inter";
+@import "tailwindcss";
 
 /* @import "tailwindcss" */
 
@@ -197,7 +195,7 @@
 
     /* Online indicator */
     .online-indicator {
-        @apply w-3 h-3 rounded-full border-2 border-card;
+        @apply w-[3rem] h-[3rem] rounded-full border-2 border-card;
         background: var(--online);
     }
 

@@ -5,6 +5,8 @@ import { Link } from "react-router";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const LandingNav = () => {
+  // TODO: if the user is logged in, show the profile picture and logout button
+  const user = false;
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
@@ -40,7 +42,7 @@ const LandingNav = () => {
             </div>
             <div className="flex items-center gap-2">
               <ThemeToggle />
-              <Link to="/auth">
+              <Link to="/login">
                 <Button
                   variant="ghost"
                   size="sm"
@@ -49,15 +51,27 @@ const LandingNav = () => {
                   Sign In
                 </Button>
               </Link>
-              <Link to="/app">
-                <Button
-                  size="sm"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
-                >
-                  Launch App{" "}
-                  <ArrowRight className="w-4 h-4 ml-1" strokeWidth={1.5} />
-                </Button>
-              </Link>
+              {user ? (
+                <Link to="/profile">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:text-foreground font-medium"
+                  >
+                    Profile
+                  </Button>
+                </Link>
+              ) : (
+                <Link to="/signup">
+                  <Button
+                    size="sm"
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
+                  >
+                    Launch App{" "}
+                    <ArrowRight className="w-4 h-4 ml-1" strokeWidth={1.5} />
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
